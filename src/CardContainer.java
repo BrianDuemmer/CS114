@@ -18,14 +18,12 @@ public abstract class CardContainer
   public abstract boolean insertCard(Card c);
   
   /**
-   * Indicates whether this container can accept this card
+   * Indicates How many cards this container can accept
    * 
-   * @param c
-   *          The {@link Card}
    * @return true if a call to {@link CardContainer#insertCard(Card)
-   *         insertCard(c)} would succeed
+   *         insertCard(...)} would succeed
    */
-  public abstract boolean canAcceptCard(Card c);
+  public abstract int spaceRemaining();
   
   /**
    * Indicates whether this container has room for more cards
@@ -33,9 +31,7 @@ public abstract class CardContainer
    * @return true iff another card can be added
    */
   public boolean hasSpace() {
-    for (Card c : cards)
-      if (c == null) return true;
-    return false;
+    return spaceRemaining() > 0;
   }
   
   public Card[] getCards() {
