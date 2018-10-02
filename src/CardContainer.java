@@ -26,7 +26,8 @@ public abstract class CardContainer
   public abstract int spaceRemaining();
   
   /**
-   * Indicates whether this container has room for more cards
+   * Indicates whether this container has room for at 
+   * least one more card
    * 
    * @return true iff another card can be added
    */
@@ -112,7 +113,7 @@ public abstract class CardContainer
     boolean success = false;
     // once we verify that the other is ready, attempt to remove the card.
     // if successful, the transfer can take place
-    if (other != null && other.canAcceptCard(c) && removeCard(c)) {
+    if (other != null && other.hasSpace() && removeCard(c)) {
       // This should never fail in theory, as canAcceptCard would have returned
       // false if there was an issue. Just to be safe, be ready to roll back
       if (!other.insertCard(c)) {

@@ -41,7 +41,7 @@ public class Card
         break;
     }
     
-    return String.format("%s%c", val, num);
+    return String.format("%s%c", val, suit);
   }
   
   /**
@@ -60,7 +60,7 @@ public class Card
   
   
   /**
-   * Checks if a card is valid
+   * Checks if a card is non-null, with valid suit and number.
    * @param c the card to check
    * @return true iff c is not null and 
    */
@@ -68,6 +68,14 @@ public class Card
     if (c != null)
       return c.num >= 1 && c.num <= 13 && "dcsh".indexOf(c.suit) >= 0;
     return false;
+  }
+
+  public char getSuit() {
+    return suit;
+  }
+
+  public int getValue() {
+    return num;
   }
 }
 
